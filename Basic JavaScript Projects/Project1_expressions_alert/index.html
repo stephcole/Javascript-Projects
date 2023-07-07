@@ -3,9 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <script src="JS/main.js"></script>
+
 </head>
 
 <body>
+    <p>Write something in the input field, and then click outside the field to lose focus (blur).</p>
+
+<input type="text" id="fname">
+
+<script>
+document.getElementById("fname").addEventListener("blur", myFunction);
+
+function myFunction() {
+  alert("Input field lost focus.");
+}
+</script>
 
 </body>
 </html>
