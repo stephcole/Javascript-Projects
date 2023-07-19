@@ -6,14 +6,14 @@ document.write("8" + 200);
 
 //boolean values//
 
-document.write=(8<7);
-document.write=(8>7);
+document.write(8<7);
+document.write(8>7);
 
 
 //double equal signs//
 
-document.write=(7==7);
-document.write=(8==13);
+document.write(7==7);
+document.write(8==13);
 
 //triple equal signs//
 
