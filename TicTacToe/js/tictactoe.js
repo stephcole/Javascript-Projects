@@ -14,11 +14,11 @@ function placeXOrO(squareNumber) {
         //this condition checks whos turn it is.
         if (activePlayer === 'X') {
             //if activePLayer is equal to 'X', the x.png is placed in HTML
-            select.style.backgroundImage = 'url("images/x.png")';
+            select.style.backgroundImage = 'url("images/dog.jpg")';
             //active player may only be 'X' pr 'O' so, if not 'C' it must be 'O'
         } else {
             //if activePlayer is equal to 'O'. the o.png is placed in HTML
-            select.style.backgroundImage = 'url("images/o.png")';
+            select.style.backgroundImage = 'url("images/cat 2.jpg")';
         }
         //squareNumber and activePlayer are concatenated together and added to array.
         selectedSquares.push(squareNumber + activePlayer);
@@ -34,7 +34,7 @@ function placeXOrO(squareNumber) {
                 activePlayer = 'X';
             }
             //this function plays placement sound.
-            audio('./media/place.mp3');
+            audio('./media/meow.wav');
             //this condition checks to see if it is the computers turn
             if (activePlayer === 'O') {
                 //this function disables clickung for computers turn.
@@ -105,7 +105,7 @@ function checkwinConditions() {
     //9 squares are slected the code executes
     else if (selectedSquares.length >= 9) {
         //this function plays the tie game sound
-        audio('./media/tie.mp3');
+        audio('./media/bark.wav');
         //this function sets a .3 second timer before the resetGame is called
         setTimeout(function () { resetGame(); }, 500);
     }
@@ -125,7 +125,7 @@ function checkwinConditions() {
 //this function makes our body element temporarily unclickable
 function disableClick() {
     //this makes our body unclickable
-    ReportBody.style.pointerEvents = 'none';
+    body.style.pointerEvents = 'none';
     //this makes our body clickable after 1 second
     setTimeout(function () { body.style.pointerEvents = 'auto'; }, 1000)
 }
@@ -205,9 +205,22 @@ function drawWinLine(coordX1, coordY1, coordX2, coordY2) {
     //this line disallows clicking while the win sound is playing
     disableClick();
     //this line plays the win sound
-    audio('./media/winGame.mp3');
+    audio('./media/applause.wav');
     //this line calls our main animation loop
     animateLineDrawing();
     //this line waits 1 second. then clear canvas resets game, an allows clicking again
     setTimeout(function () { clear(); resetGame(); }, 1000);
+}
+
+//this function resets the game n the event of a tie or a win
+function resetGame() {
+    //this loop iterates through each HTMl square element
+    for (let i = 0; i < 9; i++) {
+        //thisd variable gets the HTML element i
+        let square = document.getElementById(String(i));
+        //this removes our elements backgroundIMage
+        square.style.backgroundImage = '';
+    }
+    //this resets our array so its empty and we ans atart over
+    selectedSquares = [];
 }
